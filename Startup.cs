@@ -52,6 +52,21 @@ namespace Users
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
+            //Codigos de errores
+            //app.UseStatusCodePages("text/plain", "Pagina de codigo de estado, codigo de estado: {0}");
+            //app.UseStatusCodePages(async context => {
+            //    await context.HttpContext.Response.WriteAsJsonAsync(
+            //        "data:{" +
+            //        "status:" + context.HttpContext.Response.StatusCode +
+            //        "}"
+            //    );
+            //});
+            //app.UseStatusCodePagesWithRedirects("/Usuarios/Metodo?code={0}");
+            //app.UseStatusCodePagesWithReExecute("/Usuarios/Metodo", "?code={0}");
+
+            app.UseStatusCodePagesWithReExecute("/Home/Error", "?statusCode={0}");
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 

@@ -97,11 +97,15 @@ namespace Users.Controllers
 
         //[HttpGet("[controller]/[action]/", Name = "Omar")]
         [HttpGet("/Usuarios/Metodo", Name = "Omar")]
-        public IActionResult Metodo(int age, String name)
+        public IActionResult Metodo(int code)
         {
-            var data = $"Nombre {name} edad {age}";
+            //var data = $"Nombre {name} edad {age}";
+            //return View("Metodo", data);
+
+            var data = $"Codigo de error {code}";
             return View("Metodo", data);
+
         }
-        
+
     }
 }
