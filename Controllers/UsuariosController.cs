@@ -14,12 +14,15 @@ namespace Users.Controllers
     {
         //[Route("[controller]/[action]/{data}")]
         //[HttpGet("[controller]/[action]/{data:int}")]
+        [Route("/Usuarios")]
+        [Route("/Usuarios/Redirect")]
         public IActionResult Index()
         {
-            var url = Url.Action("Metodo", "Usuarios", new { age=25, name="Omar Cortes" });            
+            //var url = Url.Action("Metodo", "Usuarios", new { age=25, name="Omar Cortes" });
             //ViewData["data"] = data;
             //return View();
             //return Content(url);
+            var url = Url.RouteUrl("Omar", new { age = 25, name = "Omar Cortes" });
             return Redirect(url);
         }
 
@@ -92,11 +95,13 @@ namespace Users.Controllers
             return View("Index", usuario);
         }
 
+        //[HttpGet("[controller]/[action]/", Name = "Omar")]
+        [HttpGet("/Usuarios/Metodo", Name = "Omar")]
         public IActionResult Metodo(int age, String name)
         {
             var data = $"Nombre {name} edad {age}";
-            //return View("Metodo", data);
             return View("Metodo", data);
         }
+        
     }
 }
