@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Diagnostics;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -36,8 +37,21 @@ namespace Users.Controllers
             {
                 error = new ErrorViewModel
                 {
-                    RequestId = Convert.ToString(statusCode)
+                    RequestId = Convert.ToString(statusCode),
+                    ErrorMessage = "Se produjo un error al procesar su solicitud",
                 };
+            }
+            else
+            {
+                var exceptionFeature = HttpContext.Features.Get<IExceptionHandlerPathFeature>();
+                if(exceptionFeature != null)
+                {
+                    error = new ErrorViewModel
+                    {
+                        RequestId = "500",
+                        ErrorMessage = exceptionFeature.Error.Message,
+                    };
+                }
             }
             return View(error);
             //return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });

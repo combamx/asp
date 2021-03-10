@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -11,6 +12,7 @@ using Microsoft.Extensions.Hosting;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using Users.Data;
 
@@ -45,6 +47,22 @@ namespace Users
             {
                 app.UseDeveloperExceptionPage();
                 app.UseMigrationsEndPoint();
+                //app.UseExceptionHandler(options =>
+                //{
+                //    options.Run(async context =>
+                //    {
+                //        context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+                //        context.Response.ContentType = "text/html";
+                //        var ex = context.Features.Get<IExceptionHandlerFeature>();
+                //        if(ex != null)
+                //        {
+                //            var error = $"<h1>Error:{ex.Error.Message}</h1>{ex.Error.StackTrace}";
+                //            await context.Response.WriteAsJsonAsync(error).ConfigureAwait(false);
+                //        }
+                //    });
+                //});
+
+                //app.UseExceptionHandler("/Home/Error");
             }
             else
             {
@@ -55,12 +73,15 @@ namespace Users
 
             //Codigos de errores
             //app.UseStatusCodePages("text/plain", "Pagina de codigo de estado, codigo de estado: {0}");
-            //app.UseStatusCodePages(async context => {
+            //app.UseStatusCodePages(async context =>
+            //{
             //    await context.HttpContext.Response.WriteAsJsonAsync(
-            //        "data:{" +
-            //        "status:" + context.HttpContext.Response.StatusCode +
-            //        "}"
+            //        "Pagina de codigo de estado, codigo de estado: " + context.HttpContext.Response.StatusCode
             //    );
+
+            //    //await context.HttpContext.Response.WriteAsync(
+            //    //    "Pagina de codigo de estado, codigo de estado: " + context.HttpContext.Response.StatusCode 
+            //    //);
             //});
             //app.UseStatusCodePagesWithRedirects("/Usuarios/Metodo?code={0}");
             //app.UseStatusCodePagesWithReExecute("/Usuarios/Metodo", "?code={0}");
@@ -79,7 +100,9 @@ namespace Users
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");               
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
+
+                endpoints.MapAreaControllerRoute("Usuarios", "Usuario", "{controller=Usuario}/{action=Usuario}/{id?}");
 
                 endpoints.MapRazorPages();
 
