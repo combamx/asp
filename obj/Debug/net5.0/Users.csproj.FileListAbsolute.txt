@@ -164,3 +164,10 @@ D:\Users\omarc\source\repos\Users\obj\Debug\net5.0\Users.csprojAssemblyReference
 D:\Users\omarc\source\repos\Users\obj\Debug\net5.0\Razor\Areas\Usuario\Pages\Account\Register.cshtml.g.cs
 D:\Users\omarc\source\repos\Users\obj\Debug\net5.0\Razor\Areas\Usuario\Pages\_ViewImports.cshtml.g.cs
 D:\Users\omarc\source\repos\Users\obj\Debug\net5.0\Razor\Areas\Usuario\Pages\_ViewStart.cshtml.g.cs
+D:\Users\omarc\source\repos\Users\obj\Debug\net5.0\Razor\Areas\Identity\Pages\Account\Login.cshtml.g.cs
+D:\Users\omarc\source\repos\Users\obj\Debug\net5.0\Razor\Areas\Identity\Pages\Account\Register.cshtml.g.cs
+D:\Users\omarc\source\repos\Users\obj\Debug\net5.0\Razor\Areas\Identity\Pages\Account\_ViewImports.cshtml.g.cs
+D:\Users\omarc\source\repos\Users\obj\Debug\net5.0\Razor\Areas\Identity\Pages\_ValidationScriptsPartial.cshtml.g.cs
+D:\Users\omarc\source\repos\Users\obj\Debug\net5.0\Razor\Areas\Identity\Pages\_ViewImports.cshtml.g.cs
+D:\Users\omarc\source\repos\Users\obj\Debug\net5.0\Razor\Areas\Principal\Views\Principal\Principal.cshtml.g.cs
+D:\Users\omarc\source\repos\Users\obj\Debug\net5.0\Razor\Areas\Principal\Views\_ViewStart.cshtml.g.cs

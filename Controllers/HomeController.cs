@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Diagnostics;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -55,6 +57,20 @@ namespace Users.Controllers
             }
             return View(error);
             //return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        private async Task CreateRolesAsync(IServiceProvider serviceProvider)
+        {
+            var rolManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+            String[] rolesName = { "Admin", "User" };
+            foreach(var item in rolesName)
+            {
+                var roleExist = await rolManager.RoleExistsAsync(item);
+                if (!roleExist)
+                {
+                    await rolManager.CreateAsync(new IdentityRole(item));
+                }
+            }
         }
     }
 }
